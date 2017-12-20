@@ -141,6 +141,29 @@ load('ex6data3.mat');
 % Try different SVM Parameters here
 [C, sigma] = dataset3Params(X, y, Xval, yval);
 
+% tries = [0.01 0.03 0.1 0.3 1 3 10 30];
+% 
+% minerr = 100;
+% Cbest = 100;
+% sigmabest = 100;
+% for i = 1:length(tries)
+%   C = tries(i);
+%   for j = 1:length(tries)
+%     sigma = tries(j);
+%     model= svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma));
+%     pred = svmPredict(model, Xval);
+%     err = mean(double(pred ~= yval));
+%     printf('Try C=%f, sigma=%f: %f', C, sigma, err);
+%     if minerr > err
+%       minerr = err;
+%       Cbest = C;
+%       sigmabest = sigma;
+%     endif
+%   endfor
+% endfor
+% 
+% printf('Result C=%f, sigma=%f: %f', Cbest, sigmabest, minerr);
+
 % Train the SVM
 model= svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma));
 visualizeBoundary(X, y, model);
