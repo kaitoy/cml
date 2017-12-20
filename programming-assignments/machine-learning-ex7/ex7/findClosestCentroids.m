@@ -21,11 +21,23 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+% X: m*n
+% centroids: K*n
 
-
-
-
-
+for i = 1:size(X, 1)
+  Xi = X(i, :); % 1*n
+  min = 1000;
+  minIdx = 0;
+  for j = 1:K
+    centroid = centroids(j, :); % 1*n
+    norm = sum((Xi - centroid).^2);
+    if min > norm
+      min = norm;
+      minIdx = j;
+    endif
+  endfor
+  idx(i) = minIdx;
+endfor
 
 % =============================================================
 
