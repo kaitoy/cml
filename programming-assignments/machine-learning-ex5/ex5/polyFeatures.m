@@ -15,7 +15,11 @@ X_poly = zeros(numel(X), p);
 %
 % 
 
-
+for i = 1:numel(X)
+  for pi = 1:p
+    X_poly(i, pi) = X(i).^pi;
+  endfor
+endfor
 
 
 
